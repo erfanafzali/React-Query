@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
+import { useUserDeteail } from "../hooks/queries";
 
 function UserDetail() {
   const { id } = useParams();
-  console.log(id);
+  const { data } = useUserDeteail(id);
+  console.log(data);
+
   return <div>salam - {id}</div>;
 }
 

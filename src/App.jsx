@@ -4,7 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import UsersPage from "./components/UsersPage";
 import Users2 from "./components/Users2";
-import UserDetail from "./components/userDetail";
+import UserDetail from "./components/UserDetail";
+import Form from "./components/Form";
 
 function App() {
   const queryClient = new QueryClient();
@@ -15,6 +16,7 @@ function App() {
         <Route path="/users/:id" element={<UserDetail />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users2" element={<Users2 />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
       <ReactQueryDevtools />
     </QueryClientProvider>

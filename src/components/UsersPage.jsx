@@ -17,7 +17,7 @@ function UsersPage() {
       // refetchInterval: 10 * 1000,
     }
   );
-  console.log(isFetching);
+  // console.log(isFetching);
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Something went Wrong {error.message}</div>;
   return (
