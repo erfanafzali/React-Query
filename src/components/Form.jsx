@@ -4,6 +4,9 @@ function Form() {
   const { mutate, isLoading, data } = useAddPost();
   console.log(isLoading, data);
 
+
+
+  
   const sendHandler = () => {
     const data = {
       title: "foo",
