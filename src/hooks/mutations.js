@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
-
-const useAddPost = () => {
-  const addPost = (data) => {
+const usePostData = () => {
+  const mutationFn = (data) => {
     return axios.post("https://jsonplaceholder.typicode.com/posts", data);
   };
-  return useMutation(addPost);
+
+  return useMutation({ mutationFn });
 };
 
-export { useAddPost };
+export { usePostData };

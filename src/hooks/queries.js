@@ -1,20 +1,33 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-const useUsersData = () => {
-  const fetchData = () => {
-    return axios.get("https://jsonplaceholder.typicode.com/users");
+
+const useGetData = () => {
+  const queryKey = ["getPost"];
+  const queryFn = () => {
+    return axios.get("https://jsonplaceholder.typicode.com/posts");
   };
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useQuery(["users"], fetchData);
+
+  return useQuery({ queryKey, queryFn });
 };
 
-const useUserDeteail = (id) => {
-  const fetchUserDetail = ({ queryKey }) => {
+const useGetDetail = (id) => {
+  const queryKey = ["getPost", id];
+  const queryFn = ({ queryKey }) => {
     return axios.get(
-      `https://jsonplaceholder.typicode.com/users/${queryKey[1]}`
+      `https://jsonplaceholder.typicode.com/posts/${queryKey[1]}`
     );
   };
-  return useQuery(["users", id], fetchUserDetail);
+
+  return useQuery({
+    queryKey,
+    queryFn,
+    refetchInterval: 10 * 1000,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    enabled: true,
+    gcTime: 50 * 1000,
+    staleTime: 40 * 1000,
+  });
 };
 
-export { useUsersData, useUserDeteail };
+export { useGetData, useGetDetail };

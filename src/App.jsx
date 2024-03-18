@@ -1,25 +1,18 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import UsersPage from "./components/UsersPage";
-import Users2 from "./components/Users2";
+import Home from "./components/Home";
+import GetApi from "./components/GetApi";
+import PostApi from "./components/PostApi";
 import UserDetail from "./components/UserDetail";
-import Form from "./components/Form";
-
 function App() {
-  const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
+    <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/users/:id" element={<UserDetail />} />
-        <Route path="/users" element={<UsersPage />} />
-        <Route path="/users2" element={<Users2 />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/GetAPI" element={<GetApi />} />
+        <Route path="/GetAPI/:id" element={<UserDetail />} />
+        <Route path="/PostAPI" element={<PostApi />} />
       </Routes>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    </div>
   );
 }
 
